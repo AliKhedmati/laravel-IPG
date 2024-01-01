@@ -1,0 +1,21 @@
+{
+    "name": "alikhedmati/laravel-ipg",
+    "description": "Laravel IPGs",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Alikhedmati\\IPG\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ali Khedmati",
+            "email": "ali@khedmati.ir"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "illuminate/support": "^10",
+        "guzzlehttp/guzzle": "^7"
+    }
+}
