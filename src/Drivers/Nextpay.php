@@ -2,10 +2,10 @@
 
 namespace Alikhedmati\IPG\Drivers;
 
-use Alikhedmati\IPG\Contracts\BaseContract;
+use Alikhedmati\IPG\Contracts\IPG;
 use Illuminate\Support\Collection;
 
-class Nextpay extends Driver implements BaseContract
+class Nextpay extends Driver implements IPG
 {
     public function getPaymentUrl(): string
     {

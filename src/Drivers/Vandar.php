@@ -2,11 +2,11 @@
 
 namespace Alikhedmati\IPG\Drivers;
 
-use Alikhedmati\IPG\Contracts\BaseContract;
+use Alikhedmati\IPG\Contracts\IPG;
 use Alikhedmati\IPG\Drivers\Driver;
 use Illuminate\Support\Collection;
 
-class Vandar extends Driver implements BaseContract
+class Vandar extends Driver implements IPG
 {
     /**
      * @return string

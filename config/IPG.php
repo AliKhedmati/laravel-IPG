@@ -3,6 +3,9 @@
 return [
     'default-driver'    =>  env('IPG_DRIVER'),
     'drivers'   =>  [
+        'zarinpal'  =>  [
+            'api-key'   =>  env('IPG_ZARINPAL_API_KEY')
+        ],
         'nextpay'   =>  [
             'api-key'   =>  env('IPG_NEXTPAY_API_KEY')
         ],

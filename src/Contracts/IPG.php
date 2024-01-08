@@ -4,7 +4,7 @@ namespace Alikhedmati\IPG\Contracts;
 
 use Illuminate\Support\Collection;
 
-interface BaseContract
+interface IPG
 {
     public function setBaseUrl(string $baseUrl): static;
 
