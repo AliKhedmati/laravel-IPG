@@ -4,7 +4,9 @@ namespace Alikhedmati\IPG\Drivers;
 
 use Alikhedmati\IPG\Contracts\IPG;
 use Alikhedmati\IPG\Drivers\Driver;
+use Alikhedmati\IPG\DTO\ReceiptData;
 use Alikhedmati\IPG\Exceptions\IPGRequestPaymentFailed;
+use Alikhedmati\IPG\Exceptions\IPGVerifyPaymentFailed;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
@@ -53,27 +55,26 @@ class Vandar extends Driver implements IPG
         ]);
 
         if ($request->getStatusCode() != 200){
-
             $request = json_decode($request->getBody()->getContents());
-
             throw new IPGRequestPaymentFailed($request->errors[0]);
-
         }
 
         $request = json_decode($request->getBody()->getContents());
 
-        return $this->baseUrl . self::REDIRECT_USER_PAYMENT_BASE_URI . $request->token;
+        return $this->baseUrl. self::REDIRECT_USER_PAYMENT_BASE_URI. $request->token;
     }
 
     /**
-     * @return Collection
+     * @return ReceiptData
+     * @throws GuzzleException
+     * @throws IPGVerifyPaymentFailed
      */
 
-    public function verifyPayment(): Collection
+    public function verifyPayment(): ReceiptData
     {
         $requestBody = [
             'api_key'   =>  $this->apiKey,
-            'token'  =>  $token,
+            'token'  =>  $this->paymentVerificationToken,
         ];
 
         $request = $this->getClient()->post(self::VERIFY_PAYMENT_ENDPOINT, [
@@ -81,23 +82,21 @@ class Vandar extends Driver implements IPG
         ]);
 
         if ($request->getStatusCode() != 200) {
-
             $request = json_decode($request->getBody()->getContents());
-
-            throw new PaymentCreationFailed($request->errors[0]);
-
+            throw new IPGVerifyPaymentFailed($request->errors[0]);
         }
 
         $payment = collect(json_decode($request->getBody()->getContents()));
 
+        $receipt = ReceiptData::from([
+            'isVerified' => false
+        ]);
+
         if ($payment->has('status') && $payment->get('status') == 1){
-
-            $payment = $payment->merge([
-                'internal_status'   =>  true,
-                'gateway_ref'   =>  $payment->get('transId')
-            ]);
-
+            $receipt->isVerified = true;
+            $receipt->ref = $payment->get('transId');
         }
 
-        return $payment;    }
+        return $receipt;
+    }
 }

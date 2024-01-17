@@ -43,6 +43,24 @@ class Driver
     protected string $description;
 
     /**
+     * @var string
+     */
+
+    protected string $paymentVerificationToken;
+
+    /**
+     * @param string $paymentVerificationToken
+     * @return Driver
+     */
+
+    public function setPaymentVerificationToken(string $paymentVerificationToken): static
+    {
+        $this->paymentVerificationToken = $paymentVerificationToken;
+
+        return $this;
+    }
+
+    /**
      * @param string $baseUrl
      * @return $this
      */

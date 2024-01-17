@@ -2,7 +2,7 @@
 
 namespace Alikhedmati\IPG\Contracts;
 
-use Illuminate\Support\Collection;
+use Alikhedmati\IPG\DTO\ReceiptData;
 
 interface IPG
 {
@@ -12,5 +12,5 @@ interface IPG
 
     public function getPaymentUrl(): string;
 
-    public function verifyPayment(): Collection;
+    public function verifyPayment(): ReceiptData;
 }

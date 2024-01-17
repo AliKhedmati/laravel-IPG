@@ -16,6 +16,7 @@
     "require": {
         "php": "^8.3",
         "illuminate/support": "^10",
-        "guzzlehttp/guzzle": "^7"
+        "guzzlehttp/guzzle": "^7",
+        "spatie/laravel-data": "^3.11"
     }
 }

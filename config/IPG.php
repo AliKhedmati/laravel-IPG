@@ -6,9 +6,6 @@ return [
         'zarinpal'  =>  [
             'api-key'   =>  env('IPG_ZARINPAL_API_KEY')
         ],
-        'nextpay'   =>  [
-            'api-key'   =>  env('IPG_NEXTPAY_API_KEY')
-        ],
         'vandar'    =>  [
             'api-key'   =>  env('IPG_VANDAR_API_KEY')
         ],
