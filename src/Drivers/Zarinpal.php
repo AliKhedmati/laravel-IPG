@@ -27,16 +27,17 @@ class Zarinpal extends Driver implements IPG
         ];
 
         if (isset($this->mobile)){
-            $requestBody['Mobile'] = $this->getMobile();
+            $requestBody['Mobile'] = $this->mobile;
         }
 
-        if ($this->description){
-            $requestBody['Description'] = $this->getDescription();
+        if (isset($this->description)){
+            $requestBody['Description'] = $this->description;
         }
 
         $request = $this->getClient()->post(self::CREATE_PAYMENT_ENDPOINT, [
             'json'  =>  $requestBody,
-        ]);    }
+        ]);
+    }
 
     /**
      * @return Collection

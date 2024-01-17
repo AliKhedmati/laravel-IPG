@@ -12,5 +12,8 @@ return [
         'vandar'    =>  [
             'api-key'   =>  env('IPG_VANDAR_API_KEY')
         ],
+        'zibal'    =>  [
+            'api-key'   =>  env('IPG_ZIBAL_API_KEY')
+        ],
     ],
 ];
