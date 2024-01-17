@@ -3,7 +3,7 @@
 namespace Alikhedmati\IPG\Drivers;
 
 use Alikhedmati\IPG\Contracts\IPG;
-use Illuminate\Support\Collection;
+use Alikhedmati\IPG\DTO\ReceiptData;
 use Illuminate\Support\Facades\Config;
 
 class Zarinpal extends Driver implements IPG
@@ -40,10 +40,10 @@ class Zarinpal extends Driver implements IPG
     }
 
     /**
-     * @return Collection
+     * @return ReceiptData
      */
 
-    public function verifyPayment(): Collection
+    public function verifyPayment(): ReceiptData
     {
         // TODO: Implement verifyPayment() method.
     }

@@ -3,12 +3,10 @@
 namespace Alikhedmati\IPG\Drivers;
 
 use Alikhedmati\IPG\Contracts\IPG;
-use Alikhedmati\IPG\Drivers\Driver;
 use Alikhedmati\IPG\DTO\ReceiptData;
 use Alikhedmati\IPG\Exceptions\IPGRequestPaymentFailed;
 use Alikhedmati\IPG\Exceptions\IPGVerifyPaymentFailed;
 use GuzzleHttp\Exception\GuzzleException;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 
 class Vandar extends Driver implements IPG
